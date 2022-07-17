@@ -1,11 +1,21 @@
-// database named healthcare_db;
+const Provider = require('./Provider')
+const Services = require('./Services')
+const Category = require('./Category')
 
-// table called Provider
-// ID, Provider Name, Email, Password, Address, Specialization
+Provider.hasMany(Services, {
+    foreignKey: 'provider_id'
+});
 
-// table called Services
-// ID, Service, Price, Provider Name, Address, Specialization
+Services.belongsTo(Provider, {
+    foreignKey: 'provider_id'
+});
 
-// table called Category
-// ID, Service_Category (Primary, Specialty, Emergency, Urgent, Long-term, Hospice, Mental), Service
+Category.hasMany(Services, {
+    foreignKey: 'category_id'
+});
 
+Services.belongsTo(Category, {
+    foreignKey: 'category_id'
+});
+
+module.exports = { Provider, Services, Category }

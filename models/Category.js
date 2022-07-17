@@ -19,13 +19,6 @@ Category.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    service: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-    }
   },
   {
     sequelize,

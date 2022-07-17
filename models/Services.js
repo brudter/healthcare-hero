@@ -26,13 +26,20 @@ Services.init(
           isDecimal: true
         }
     },
-    provider_name: {
+    provider_id: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
+        references: {
+          model: 'provider',
+          key: 'id'
         }
-    }
+    },
+    category_id: {
+      type: DataTypes.STRING,
+      references: {
+        model: 'category',
+        key: 'id'
+      }
+  }
   },
   {
     sequelize,
