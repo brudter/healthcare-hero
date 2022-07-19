@@ -18,4 +18,4 @@ Services.belongsTo(Category, {
     foreignKey: 'category_id'
 });
 
-module.exports = { Provider, Services, Category }
+module.exports = { Provider, Services, Category };
