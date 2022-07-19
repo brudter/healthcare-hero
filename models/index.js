@@ -1,6 +1,6 @@
-const Provider = require('./Provider')
-const Services = require('./Services')
-const Category = require('./Category')
+const Provider = require('./Provider');
+const Services = require('./Services');
+const Category = require('./Category');
 
 Provider.hasMany(Services, {
     foreignKey: 'provider_id'
