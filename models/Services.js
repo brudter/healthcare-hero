@@ -27,14 +27,14 @@ Services.init(
         }
     },
     provider_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         references: {
           model: 'provider',
           key: 'id'
         }
     },
     category_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       references: {
         model: 'category',
         key: 'id'
