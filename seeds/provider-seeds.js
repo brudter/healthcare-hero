@@ -2,7 +2,7 @@ const { Provider } = require('../models');
 
 const providerData = [
   {
-    username: 'Denver Health,
+    username: 'Denver Health',
     email: 'denver@denver.com',
     password: 'UofD', 
     address: '777 Bannock St',
