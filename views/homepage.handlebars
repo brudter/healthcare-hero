@@ -1,8 +1,10 @@
 <h2>Provider Information</h2>
-<ol class="post-list">
+<div class="container">
+<ul class="post-list row">
     {{#each posts as |post|}}
-    <li>
+    <li class="col-6">
         {{> post-info post }}
     </li>
     {{/each}}
-</ol>
+</ul>
+</div>
