@@ -23,7 +23,7 @@ const output = `
         host: 'smtp.ethereal.email',
         port: 587,
         auth: {
-            user: 'emma.lehner96@ethereal.email',
+            provider: 'emma.lehner96@ethereal.email',
             pass: 'BwABArgSuRm8q4J5N4'
         }
     });

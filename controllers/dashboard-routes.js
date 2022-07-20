@@ -1,43 +1,43 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment, Vote } = require('../models');
+const { Services, Provider, Comment, Vote } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, (req, res) => {
     console.log(req.session);
     console.log('======================');
-    Post.findAll({
+    Services.findAll({
         where: {
-            user_id: req.session.user_id
+            provider_id: req.session.provider_id
         },
         attributes: [
             'id',
-            'post_url',
+            'services_url',
             'title',
             'address',
             'cost',
             'service_type',
             'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
-                    model: User,
-                    attributes: ['username']
+                    model: Provider,
+                    attributes: ['provider_name']
                 }
             },
             {
-                model: User,
-                attributes: ['username']
+                model: Provider,
+                attributes: ['provider_name']
             }
         ]
     })
-        .then(dbPostData => {
-            const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('dashboard', { posts, loggedIn: true });
+        .then(dbServicesData => {
+            const services = dbServicesData.map(services => services.get({ plain: true }));
+            res.render('dashboard', { services, loggedIn: true });
         })
         .catch(err => {
             console.log(err);
@@ -46,38 +46,38 @@ router.get('/', withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
-    Post.findByPk(req.params.id, {
+    Services.findByPk(req.params.id, {
         attributes: [
             'id',
-            'post_url',
+            'services_url',
             'title',
             'address',
             'cost',
             'service_type',
             'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
-                    model: User,
-                    attributes: ['username']
+                    model: Provider,
+                    attributes: ['provider_name']
                 }
             },
             {
-                model: User,
-                attributes: ['username']
+                model: Provider,
+                attributes: ['provider_name']
             }
         ]
     })
-        .then(dbPostData => {
-            if (dbPostData) {
-                const post = dbPostData.get({ plain: true });
+        .then(dbServicesData => {
+            if (dbServicesData) {
+                const services = dbServicesData.get({ plain: true });
 
-                res.render('edit-post', {
-                    post,
+                res.render('edit-services', {
+                    services,
                     loggedIn: true
                 });
             } else {

@@ -5,7 +5,7 @@ class Services extends Model {}
 //     static upvote(body, models) {
 //         return models.Vote.create({
 //             user_id: body.services_id,
-//             post_id: body.services_id
+//             services_id: body.services_id
 //         }).then(() => {
 //             return Services.findOne({
 //                 where: {
@@ -13,18 +13,18 @@ class Services extends Model {}
 //                 },
 //                 attributes: [
 //                     'id',
-//                     'post_url',
+//                     'services_url',
 //                     'services',
 //                     'address',
 //                     'service_type',
 //                     'cost',
 //                     'created_at',
-//                     [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+//                     [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
 //                 ],
 //                 include: [
 //                     {
 //                         model: models.Comment,
-//                         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+//                         attributes: ['id', 'comment_text', 'services_id', 'user_id', 'created_at'],
 //                         include: {
 //                             model: models.User,
 //                             attributes: ['username']
@@ -49,7 +49,7 @@ Services.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        post_url: {
+        services_url: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {

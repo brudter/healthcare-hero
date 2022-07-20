@@ -10,17 +10,17 @@ Vote.init(
             primaryKey: true,
             autoIncrement: true
         },
-        user_id: {
+        provider_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'provider',
                 key: 'id'
             }
         },
-        post_id: {
+        services_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'post',
+                model: 'services',
                 key: 'id'
             }
         }

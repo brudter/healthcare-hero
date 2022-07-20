@@ -1,12 +1,12 @@
 const router = require('express').Router();
-const { User, Post, Comment, Vote } = require('../../models');
+const { Provider, Services, Comment, Vote } = require('../../models');
 
-// get all users
+// get all Pri
 router.get('/', (req, res) => {
-    User.findAll({
+    Provider.findAll({
         attributes: { exclude: ['password'] }
     })
-        .then(dbUserData => res.json(dbUserData))
+        .then(dbProviderData => res.json(dbProviderData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -14,38 +14,38 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    User.findOne({
+    Provider.findOne({
         attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
         },
         include: [
             {
-                model: Post,
-                attributes: ['id', 'title', 'post_url', 'service_type', 'address', 'cost', 'created_at']
+                model: Services,
+                attributes: ['id', 'title', 'services_url', 'service_type', 'address', 'cost', 'created_at']
             },
             {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'created_at'],
                 include: {
-                    model: Post,
+                    model: Services,
                     attributes: ['title']
                 }
             },
             {
-                model: Post,
+                model: Services,
                 attributes: ['title'],
                 through: Vote,
-                as: 'voted_posts'
+                as: 'voted_services'
             }
         ]
     })
-        .then(dbUserData => {
-            if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id' });
+        .then(dbProviderData => {
+            if (!dbProviderData) {
+                res.status(404).json({ message: 'No provider found with this id' });
                 return;
             }
-            res.json(dbUserData);
+            res.json(Provider);
         })
         .catch(err => {
             console.log(err);
@@ -54,18 +54,23 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    User.create({
-        username: req.body.username,
+    Provider.create({
+        provider_name: req.body.provider_name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        address: req.body.address,
+        address_city: req.body.address_city,
+        address_state: req.body.address_state,
+        address_zip: req.body.address_zip,
+        specialization: req.body.specialization
     })
-        .then(dbUserData => {
+        .then(dbProviderData => {
             req.session.save(() => {
-                req.session.user_id = dbUserData.id;
-                req.session.username = dbUserData.username;
+                req.session.provider_id = dbProviderData.id;
+                req.session.provider_name = dbProviderData.provider_name;
                 req.session.loggedIn = true;
 
-                res.json(dbUserData);
+                res.json(dbProviderData);
             });
         })
         .catch(err => {
@@ -75,17 +80,17 @@ router.post('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    User.findOne({
+    Provider.findOne({
         where: {
             email: req.body.email
         }
-    }).then(dbUserData => {
-        if (!dbUserData) {
-            res.status(400).json({ message: 'No user with that email address!' });
+    }).then(dbProviderData => {
+        if (!dbProviderData) {
+            res.status(400).json({ message: 'No provider with that email address!' });
             return;
         }
 
-        const validPassword = dbUserData.checkPassword(req.body.password);
+        const validPassword = dbProviderData.checkPassword(req.body.password);
 
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect password!' });
@@ -93,11 +98,11 @@ router.post('/login', (req, res) => {
         }
 
         req.session.save(() => {
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
+            req.session.provider_id = dbProviderData.id;
+            req.session.provider_name = dbProviderData.provider_name;
             req.session.loggedIn = true;
 
-            res.json({ user: dbUserData, message: 'You are now logged in!' });
+            res.json({ provider: dbProviderData, message: 'You are now logged in!' });
         });
     });
 });
@@ -114,18 +119,18 @@ router.post('/logout', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    User.update(req.body, {
+    Provider.update(req.body, {
         individualHooks: true,
         where: {
             id: req.params.id
         }
     })
-        .then(dbUserData => {
-            if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id' });
+        .then(dbProviderData => {
+            if (!dbProviderData) {
+                res.status(404).json({ message: 'No provider found with this id' });
                 return;
             }
-            res.json(dbUserData);
+            res.json(dbProviderData);
         })
         .catch(err => {
             console.log(err);
@@ -134,17 +139,17 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    User.destroy({
+    Provider.destroy({
         where: {
             id: req.params.id
         }
     })
-        .then(dbUserData => {
-            if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id' });
+        .then(dbProviderData => {
+            if (!dbProviderData) {
+                res.status(404).json({ message: 'No provider found with this id' });
                 return;
             }
-            res.json(dbUserData);
+            res.json(dbProviderData);
         })
         .catch(err => {
             console.log(err);
