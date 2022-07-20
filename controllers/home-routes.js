@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'services_url',
-            'title',
+            'services',
             'cost',
             'address',
             'service_type',

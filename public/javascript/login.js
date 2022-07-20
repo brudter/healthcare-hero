@@ -5,7 +5,7 @@ async function loginFormHandler(event) {
     const password = document.querySelector('#password-login').value.trim();
 
     if (email && password) {
-        const response = await fetch('/api/users/login', {
+        const response = await fetch('/api/providers/login', {
             method: 'post',
             body: JSON.stringify({
                 email,
@@ -25,17 +25,30 @@ async function loginFormHandler(event) {
 async function signupFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#username-signup').value.trim();
+    const provider_name = document.querySelector('#provider_name-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
+    const address = document.querySelector('#address-signup').value.trim();
+    const address_city =  document.querySelector('#address_city-signup').value.trim();
+    const address_state = document.querySelector('#address_state-signup').value.trim();
+    const address_zip = document.querySelector('#address_zip-signup').value.trim();
+    const specialization = document.querySelector('#specialization-signup').value.trim();
 
-    if (username && email && password) {
-        const response = await fetch('/api/users', {
+    
+
+
+    if (provider_name && email && password) {
+        const response = await fetch('/api/providers', {
             method: 'post',
             body: JSON.stringify({
-                username,
+                provider_name,
                 email,
-                password
+                password,
+                address,
+                address_city,
+                address_state,
+                address_zip,
+                specialization
             }),
             headers: { 'Content-Type': 'application/json' }
         });

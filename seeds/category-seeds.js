@@ -10,4 +10,4 @@ const categoryData = [
 ]
 const seedCategoryData = () => Category.bulkCreate(categoryData);
 
-module.exports = seedProviderData;
+module.exports = seedCategoryData;

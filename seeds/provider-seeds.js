@@ -2,7 +2,7 @@ const { Provider } = require('../models');
 
 const providerData = [
   {
-    username: 'Denver Health',
+    provider_name: 'Denver Health',
     email: 'denver@denver.com',
     password: 'UofD', 
     address: '777 Bannock St',
@@ -12,7 +12,7 @@ const providerData = [
     specialization: 'Emergency Medical'
   },
   {
-    username: 'Lenox Hill Hospital',
+    provider_name: 'Lenox Hill Hospital',
     email: 'LenoxHill@email.com',
     password: 'Lenox', 
     address: '100 E 77th St',

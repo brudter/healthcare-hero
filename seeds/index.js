@@ -14,7 +14,7 @@ const seedAll = async () => {
   await seedServices();
   console.log('--------------');
 
-  await seedCategories();
+  await seedCategory();
   console.log('--------------');
 
   process.exit(0);
