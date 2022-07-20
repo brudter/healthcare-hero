@@ -1,6 +1,6 @@
 const seedProviders = require('./provider-seeds');
 const seedServices = require('./services-seeds');
-// const seedCategory = require('./category-seeds');
+const seedCategory = require('./category-seeds');
 
 
 const sequelize = require('../config/connection');
@@ -14,8 +14,8 @@ const seedAll = async () => {
   await seedServices();
   console.log('--------------');
 
-//   await seedCategories();
-//   console.log('--------------');
+  await seedCategories();
+  console.log('--------------');
 
   process.exit(0);
 };
