@@ -1,53 +1,93 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+// create our Post model
+class Services extends Model {}
+//     static upvote(body, models) {
+//         return models.Vote.create({
+//             user_id: body.services_id,
+//             post_id: body.services_id
+//         }).then(() => {
+//             return Services.findOne({
+//                 where: {
+//                     id: body.services_id
+//                 },
+//                 attributes: [
+//                     'id',
+//                     'post_url',
+//                     'services',
+//                     'address',
+//                     'service_type',
+//                     'cost',
+//                     'created_at',
+//                     [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+//                 ],
+//                 include: [
+//                     {
+//                         model: models.Comment,
+//                         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+//                         include: {
+//                             model: models.User,
+//                             attributes: ['username']
+//                         }
+//                     }
+//                 ]
+//             });
+//         });
+//     }
+// }
 
-// create our User model
-class Services extends Model {
-  // set up method to run on instance data (per user) to check password
-}
-
-// create fields/columns for User model
+// create fields/columns for Post model
 Services.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    service: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    price: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          isDecimal: true
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        services: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        post_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isURL: true
+            }
+        },
+        service_type: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        cost: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                isDecimal: true,
+            }
+        },
+        provider_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'provider',
+                key: 'id'
+            }
         }
     },
-    provider_id: {
-        type: DataTypes.STRING,
-        references: {
-          model: 'provider',
-          key: 'id'
-        }
-    },
-    category_id: {
-      type: DataTypes.STRING,
-      references: {
-        model: 'category',
-        key: 'id'
-      }
-  }
-  },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'services'
-  }
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'services'
+    }
 );
 
 module.exports = Services;
