@@ -3,16 +3,16 @@ const { Services } = require('../models');
 
 const servicesData = [
   {
-    service: 'Denver Health',
-    price: 'denver@denver.com',
-    provider_id: 'UofD', 
-    category_id: '777 Bannock St',
+    service: 'surgery',
+    price: '15000',
+    provider_id: '1', 
+    category_id: '1',
   },
   {
-    service: 'Denver Health',
-    price: 'denver@denver.com',
-    provider_id: 'UofD', 
-    category_id: '777 Bannock St',
+    service: 'tonsile removal',
+    price: '1500',
+    provider_id: '2', 
+    category_id: '2',
   }
 ]
 const seedServicesData = () => Services.bulkCreate(servicesData);
