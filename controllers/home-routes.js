@@ -8,10 +8,9 @@ router.get('/', (req, res) => {
     Services.findAll({
         attributes: [
             'id',
-            'services_url',
+            'provider_url',
             'services',
             'cost',
-            'address',
             'service_type',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
@@ -53,9 +52,8 @@ router.get('/services/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'services_url',
+            'provider_url',
             'title',
-            'address',
             'cost',
             'service_type',
             'created_at',

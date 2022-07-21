@@ -3,31 +3,31 @@
     <h2>
         Edit Provider
     </h2>
-    <form class="edit-post-form">
+    <form class="edit-services-form">
         <p>Provider Name</p>
         <div>
-            <input name="provider-name" type="text" value="{{post.title}}" />
+            <input name="provider-name" type="text" value="{{services.title}}" />
         </div>
         <p>Address</p>
         <div>
-            <input name="address" type="text" value="{{post.address}}" />
+            <input name="address" type="text" value="{{provider.address}}" />
         </div>
         <p>Provider Link</p>
         <div>
-            <input name="post-url" type="text" value="{{post.post_url}}" />
+            <input name="provider_url" type="text" value="{{services.provider_url}}" />
         </div>
         <p>Service Type</p>
         <div>
-            <input name="service_type" type="text" value="{{post.service_type}}" />
+            <input name="service_type" type="text" value="{{services.service_type}}" />
         </div>
         <p>Cost</p>
         <div>
-            <input name="cost" type="number" value="{{post.cost}}" />
+            <input name="cost" type="number" value="{{services.cost}}" />
         </div>
         <div>
-            {{post.vote_count}} {{format_plural "point" post.vote_count}} by you on {{format_date post.created_at}}
+            {{services.vote_count}} {{format_plural "point" services.vote_count}} by you on {{format_date services.created_at}}
             |
-            <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+            <a href="/services/{{services.id}}">{{services.comments.length}} {{format_plural "comment" post.comments.length}}</a>
         </div>
         <button type="submit">Save provider</button>
         <button type="button" class="delete-post-btn">Delete provider</button>
@@ -46,6 +46,6 @@
 
 {{> comments post.comments}}
 
-<script src="/javascript/edit-post.js"></script>
-<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/edit-services.js"></script>
+<script src="/javascript/delete-services.js"></script>
 <script src="/javascript/comment.js"></script>

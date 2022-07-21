@@ -2,16 +2,16 @@ async function newFormHandler(event) {
     event.preventDefault();
 
     const title = document.querySelector('input[name="provider-name"]').value;
-    const post_url = document.querySelector('input[name="post-url"]').value;
+    const provider_url = document.querySelector('input[name="services-url"]').value;
     const service_type = document.querySelector('input[name="service_type"]').value;
     const address = document.querySelector('input[name="address"]').value;
     const cost = document.querySelector('input[name="cost"]').value;
 
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`/api/services`, {
         method: 'POST',
         body: JSON.stringify({
             title,
-            post_url,
+            provider_url,
             service_type,
             address,
             cost
@@ -28,4 +28,4 @@ async function newFormHandler(event) {
     }
 }
 
-document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-service-form').addEventListener('submit', newFormHandler);

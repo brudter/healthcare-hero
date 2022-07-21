@@ -49,7 +49,7 @@ Services.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        services_url: {
+        provider_url: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -59,13 +59,6 @@ Services.init(
         service_type: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        address: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
         },
         cost: {
             type: DataTypes.INTEGER,

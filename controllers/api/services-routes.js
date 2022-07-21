@@ -9,11 +9,10 @@ router.get('/', (req, res) => {
     Services.findAll({
         attributes: [
             'id',
-            'services_url',
+            'provider_url',
             'title',
             'cost',
             'service_type',
-            'address',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],
@@ -46,9 +45,8 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'services_url',
+            'providfer_url',
             'service_type',
-            'address',
             'cost',
             'title',
             'created_at',
@@ -85,10 +83,9 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
     Services.create({
         title: req.body.title,
-        services_url: req.body.services_url,
+        provider_url: req.body.provider_url,
         service_type: req.body.service_type,
         cost: req.body.cost,
-        address: req.body.address,
         provider_id: req.session.provider_id
     })
         .then(dbServicesData => res.json(dbServicesData))
@@ -111,8 +108,7 @@ router.put('/:id', withAuth, (req, res) => {
     Services.update(
         {
             title: req.body.title,
-            address: req.body.address,
-            services_url: req.body.services_url,
+            provider_url: req.body.provider_url,
             cost: req.body.cost,
             service_type: req.body.service_type,
         },

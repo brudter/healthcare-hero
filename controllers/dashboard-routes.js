@@ -12,9 +12,8 @@ router.get('/', withAuth, (req, res) => {
         },
         attributes: [
             'id',
-            'services_url',
+            'provider_url',
             'title',
-            'address',
             'cost',
             'service_type',
             'created_at',
@@ -49,9 +48,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
     Services.findByPk(req.params.id, {
         attributes: [
             'id',
-            'services_url',
+            'provider_url',
             'title',
-            'address',
             'cost',
             'service_type',
             'created_at',
