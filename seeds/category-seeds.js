@@ -3,11 +3,11 @@ const { Category } = require('../models');
 const categoryData = [
   {
     id: 1,
-    service_category: 'Emergency',
+    service_category: 'Imaging',
   },
   {
     id: 2,
-    service_category: 'Ear, Nose, Throat',
+    service_category: 'Laboratory',
   }
 ]
 const seedCategoryData = () => Category.bulkCreate(categoryData);
