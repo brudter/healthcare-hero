@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'provider_url',
-            'services',
+            'service_name',
             'cost',
             'service_type',
             'created_at',
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
         ]
     })
         .then(dbServicesData => {
-            const services = dbServicesData.map(services => services.get({ plain: true }));
+            const services = dbServicesData.map(services => service_name.get({ plain: true }));
 
             res.render('homepage', {
                 services,
@@ -53,7 +53,7 @@ router.get('/services/:id', (req, res) => {
         attributes: [
             'id',
             'provider_url',
-            'title',
+            'service_name',
             'cost',
             'service_type',
             'created_at',

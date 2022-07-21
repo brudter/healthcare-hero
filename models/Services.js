@@ -45,7 +45,7 @@ Services.init(
             primaryKey: true,
             autoIncrement: true
         },
-        services: {
+        service_name: {
             type: DataTypes.STRING,
             allowNull: false
         },

@@ -13,7 +13,7 @@ router.get('/', withAuth, (req, res) => {
         attributes: [
             'id',
             'provider_url',
-            'title',
+            'service_name',
             'cost',
             'service_type',
             'created_at',
@@ -35,7 +35,7 @@ router.get('/', withAuth, (req, res) => {
         ]
     })
         .then(dbServicesData => {
-            const services = dbServicesData.map(services => services.get({ plain: true }));
+            const services = dbServicesData.map(services => services_name.get({ plain: true }));
             res.render('dashboard', { services, loggedIn: true });
         })
         .catch(err => {
@@ -49,7 +49,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         attributes: [
             'id',
             'provider_url',
-            'title',
+            'service_name',
             'cost',
             'service_type',
             'created_at',

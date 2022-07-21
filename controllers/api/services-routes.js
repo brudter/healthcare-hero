@@ -9,10 +9,10 @@ router.get('/', (req, res) => {
     Services.findAll({
         attributes: [
             'id',
+            'service_name',
             'provider_url',
-            'title',
-            'cost',
             'service_type',
+            'cost',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],
@@ -48,7 +48,7 @@ router.get('/:id', (req, res) => {
             'providfer_url',
             'service_type',
             'cost',
-            'title',
+            'service_name',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],
@@ -82,7 +82,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', withAuth, (req, res) => {
     Services.create({
-        title: req.body.title,
+        service_name: req.body.service_name,
         provider_url: req.body.provider_url,
         service_type: req.body.service_type,
         cost: req.body.cost,
@@ -107,7 +107,7 @@ router.put('/upvote', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
     Services.update(
         {
-            title: req.body.title,
+            service_name: req.body.service_name,
             provider_url: req.body.provider_url,
             cost: req.body.cost,
             service_type: req.body.service_type,

@@ -3,14 +3,14 @@ const { Services } = require('../models');
 
 const servicesData = [
   {
-    services: 'surgery',
+    service_name: 'surgery',
     provider_url: 'www.google.com',
     service_type: 'emergency',
     cost: '15000',
     provider_id: '1', 
   },
   {
-    services: 'tonsil removal',
+    service_name: 'tonsil removal',
     provider_url: 'www.bing.com',
     service_type: 'ear, nose, throat',
     cost: '1500',
