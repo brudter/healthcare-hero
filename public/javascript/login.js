@@ -34,8 +34,6 @@ async function signupFormHandler(event) {
     const address_zip = document.querySelector('#address_zip-signup').value.trim();
     const specialization = document.querySelector('#specialization-signup').value.trim();
 
-    
-
 
     if (provider_name && email && password) {
         const response = await fetch('/api/providers', {

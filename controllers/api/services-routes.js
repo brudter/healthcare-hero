@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
             'id',
             'service_name',
             'provider_url',
-            'service_type',
+            'service_category',
             'cost',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'providfer_url',
-            'service_type',
+            'service_category',
             'cost',
             'service_name',
             'created_at',
@@ -84,7 +84,7 @@ router.post('/', withAuth, (req, res) => {
     Services.create({
         service_name: req.body.service_name,
         provider_url: req.body.provider_url,
-        service_type: req.body.service_type,
+        service_category: req.body.service_category,
         cost: req.body.cost,
         provider_id: req.session.provider_id
     })
@@ -110,7 +110,7 @@ router.put('/:id', withAuth, (req, res) => {
             service_name: req.body.service_name,
             provider_url: req.body.provider_url,
             cost: req.body.cost,
-            service_type: req.body.service_type,
+            service_category: req.body.service_category,
         },
         {
             where: {

@@ -56,9 +56,12 @@ Services.init(
                 isURL: true
             }
         },
-        service_type: {
-            type: DataTypes.STRING,
-            allowNull: false
+        service_category: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'category',
+                key: 'id'
+            }
         },
         cost: {
             type: DataTypes.INTEGER,

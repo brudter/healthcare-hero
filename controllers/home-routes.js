@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
             'provider_url',
             'service_name',
             'cost',
-            'service_type',
+            'service_category',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
         ]
     })
         .then(dbServicesData => {
-            const services = dbServicesData.map(services => service_name.get({ plain: true }));
+            const services = dbServicesData.map(services => services.get({ plain: true }));
 
             res.render('homepage', {
                 services,
@@ -55,7 +55,7 @@ router.get('/services/:id', (req, res) => {
             'provider_url',
             'service_name',
             'cost',
-            'service_type',
+            'service_category',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],

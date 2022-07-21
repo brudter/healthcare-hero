@@ -69,10 +69,11 @@
 // module.exports = { User, Post, Vote, Comment };
 
 const Provider = require('./Provider')
-const Services = require('./Services')
 const Category = require('./Category')
+const Services = require('./Services')
 const Comment = require('./Comment');
 const Vote = require('./Vote')
+
 Provider.hasMany(Services, {
     foreignKey: 'provider_id'
 });
@@ -107,9 +108,11 @@ Provider.hasMany(Comment, {
 Services.hasMany(Comment, {
     foreignKey: 'services_id'
 });
+
 Provider.hasMany(Vote, {
     foreignKey: 'provider_id'
 })
+
 Services.hasMany(Vote, {
     foreignKey: 'services_id'
 })
