@@ -1,8 +1,34 @@
-<h2>Provider Information</h2>
+<h2>Services</h2>
 <ol class="services-list">
-    {{#each services as |service|}}
+  {{#each services as |service|}}
     <li>
-        {{> service-info service}}
+      {{!-- {{> service-info service}} --}}
+      <article class="services">
+        <div class="title">
+          <a href="{{provider_url}}" target="_blank">{{service_name}}</a>
+          <span>({{format_url provider_url}})</span>
+        </div>
+        <div class="address">
+          <p>Address: {{address}}</p>
+        </div>
+        <div class="service_type">
+          <p>Type of Service: {{service_type}}</p>
+        </div>
+        <div class="cost">
+          <p>Cost: ${{cost}}</p>
+        </div>
+        <div class="meta">
+          {{vote_count}}
+          {{format_plural "point" vote_count}}
+          by
+          {{provider.providername}}
+          on
+          {{format_date created_at}}
+          |
+          <a href="/services/{{id}}">{{comments.length}}
+            {{format_plural "comment" comments.length}}</a>
+        </div>
+      </article>
     </li>
-    {{/each}}
+  {{/each}}
 </ol>
