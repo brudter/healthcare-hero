@@ -1,41 +1,40 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment, Vote } = require('../models');
+const { Services, Provider, Comment, Vote } = require('../models');
 
-// get all posts for homepage
+// get all services for homepage
 router.get('/', (req, res) => {
     console.log('======================');
-    Post.findAll({
+    Services.findAll({
         attributes: [
             'id',
-            'post_url',
-            'title',
+            'provider_url',
+            'service_name',
             'cost',
-            'address',
-            'service_type',
+            'service_category',
             'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
-                    model: User,
-                    attributes: ['username']
+                    model: Provider,
+                    attributes: ['provider_name']
                 }
             },
             {
-                model: User,
-                attributes: ['username']
+                model: Provider,
+                attributes: ['provider_name']
             }
         ]
     })
-        .then(dbPostData => {
-            const posts = dbPostData.map(post => post.get({ plain: true }));
+        .then(dbServicesData => {
+            const services = dbServicesData.map(services => services.get({ plain: true }));
 
             res.render('homepage', {
-                posts,
+                services,
                 loggedIn: req.session.loggedIn
             });
         })
@@ -45,47 +44,46 @@ router.get('/', (req, res) => {
         });
 });
 
-// get single post
-router.get('/post/:id', (req, res) => {
-    Post.findOne({
+// get single services
+router.get('/services/:id', (req, res) => {
+    Services.findOne({
         where: {
             id: req.params.id
         },
         attributes: [
             'id',
-            'post_url',
-            'title',
-            'address',
+            'provider_url',
+            'service_name',
             'cost',
-            'service_type',
+            'service_category',
             'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
-                    model: User,
-                    attributes: ['username']
+                    model: Provider,
+                    attributes: ['provider_name']
                 }
             },
             {
-                model: User,
-                attributes: ['username']
+                model: Provider,
+                attributes: ['provider_name']
             }
         ]
     })
-        .then(dbPostData => {
-            if (!dbPostData) {
-                res.status(404).json({ message: 'No post found with this id' });
+        .then(dbServicesData => {
+            if (!dbServicesData) {
+                res.status(404).json({ message: 'No services found with this id' });
                 return;
             }
 
-            const post = dbPostData.get({ plain: true });
+            const services = dbServicesData.get({ plain: true });
 
-            res.render('single-post', {
-                post,
+            res.render('single-services', {
+                services,
                 loggedIn: req.session.loggedIn
             });
         })

@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,14 +17,13 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^6.1.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "dotenv": "^8.6.0",
+    "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
-    "express-session": "^1.17.0",
+    "express-session": "^1.17.3",
     "handlebars": "^4.7.3",
     "mysql2": "^2.1.0",
-    "nodemailer": "^6.7.7",
-    "sequelize": "^5.21.5"
+    "sequelize": "^5.22.5"
   },
   "bugs": {
     "url": "https://github.com/brudter/healthcare-hero/issues"
