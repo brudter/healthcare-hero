@@ -27,8 +27,8 @@
         <p>Cost: ${{cost}}</p>
     </div>
     <div class="meta">
-        {{vote_count}} {{format_plural "point" vote_count}} by {{provider.providername}} on {{format_date created_at}}
-        |
+        created by {{provider.provider_name}} on {{format_date created_at}}
+    |
         <a href="/services/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
 </article>
