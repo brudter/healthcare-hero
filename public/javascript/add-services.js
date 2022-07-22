@@ -2,7 +2,7 @@ async function newFormHandler(event) {
     event.preventDefault();
 
     //const provider_name = document.querySelector('input[name="provider-name"]').value;
-    const address = document.querySelector('input[name="address"]').value;
+    // const address = document.querySelector('input[name="address"]').value;
     const service_name = document.querySelector('input[name="service_name"]').value;
     const provider_url = document.querySelector('input[name="provider-url"]').value;
     const service_category = document.querySelector('input[name="service_category"]').value;
@@ -15,7 +15,7 @@ async function newFormHandler(event) {
             //provider_name,
             provider_url,
             service_category,
-            address,
+            // address,
             cost
         }),
         headers: {

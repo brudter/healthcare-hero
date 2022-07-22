@@ -14,6 +14,7 @@ router.get("/", (req, res) => {
     attributes: [
       "id",
       "service_name",
+      "service_category",
       "provider_url",
       "cost",
       "created_at",
