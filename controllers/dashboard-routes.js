@@ -30,12 +30,12 @@ router.get("/", (req, res) => {
         ],
         include: {
           model: Provider,
-          attributes: ["provider_name"],
+          attributes: ["provider_name","address"],
         },
       },
       {
         model: Provider,
-        attributes: ["provider_name"],
+        attributes: ["provider_name","address"],
       },
     ],
   })
@@ -67,12 +67,12 @@ router.get('/edit/:id', (req, res) => {
                 attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
                     model: Provider,
-                    attributes: ['provider_name']
+                    attributes: ['provider_name','address']
                 }
             },
             {
                 model: Provider,
-                attributes: ['provider_name']
+                attributes: ['provider_name','address']
             }
         ]
     })
