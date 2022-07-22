@@ -57,11 +57,12 @@ Services.init(
             }
         },
         service_category: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'category',
-                key: 'id'
-            }
+            type: DataTypes.STRING,
+            // references: {
+            //     model: 'category',
+            //     key: 'id'
+            // }
+            allowNull: false,
         },
         cost: {
             type: DataTypes.INTEGER,

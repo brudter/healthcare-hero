@@ -2,12 +2,25 @@
     <div class="title">
         <a href="{{provider_url}}" target="_blank">{{service_name}}</a>
         <span>({{format_url provider_url}})</span>
+   <div class="provider_name">
+        <p>Provider Name: {{provider.provider_name}}</p>
+    </div>
     </div>
         <div class="address">
-        <p>Address: {{address}}</p>
+        <p>Address: {{provider.address}}</p>
     </div>
+
     <div class="service_name">
         <p>Name of Service: {{service_name}}</p>
+    </div>
+
+    <div class="provider_url">
+        <p>Provider Link: {{provider_url}}</p>
+    </div>
+
+    <div class="service_category">
+        <p>Type of Service: {{service_category}} </p>
+    
     </div>
         <div class="cost">
         <p>Cost: ${{cost}}</p>

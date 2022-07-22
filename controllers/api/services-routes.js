@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
             'id',
             'service_name',
             'provider_url',
+            'address',
             'service_category',
             'cost',
             'created_at',
@@ -45,7 +46,7 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'providfer_url',
+            'provider_url',
             'service_category',
             'cost',
             'service_name',
