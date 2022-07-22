@@ -23,7 +23,7 @@
         <div>
             {{services.vote_count}} {{format_plural "point" services.vote_count}} by you on {{format_date services.created_at}}
             |
-            <a href="/services/{{services.id}}">{{services.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+            <a href="/services/{{services.id}}">{{services.comments.length}} {{format_plural "comment" provider.comments.length}}</a>
         </div>
         <button type="submit">Save provider</button>
         <button type="button" class="delete-services-btn">Delete provider</button>
@@ -40,7 +40,7 @@
     </div>
 </form>
 
-{{> comments post.comments}}
+{{> comments services.comments}}
 
 <script src="/javascript/edit-services.js"></script>
 <script src="/javascript/delete-services.js"></script>
