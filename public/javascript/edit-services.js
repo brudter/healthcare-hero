@@ -1,9 +1,9 @@
 async function editFormHandler(event) {
     event.preventDefault();
 
-    const service_name = document.querySelector('input[name="service-name"]').value.trim();
+    const service_name = document.querySelector('input[name="service_name"]').value.trim();
     // const address = document.querySelector('input[name="address"]').value.trim();
-    const provider_url = document.querySelector('input[name="services-url"]').value.trim();
+    const provider_url = document.querySelector('input[name="provider_url"]').value.trim();
     const service_category = document.querySelector('input[name="service_category"]').value.trim();
     const cost = document.querySelector('input[name="cost"]').value.trim();
 
