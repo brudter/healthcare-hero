@@ -1,34 +1,37 @@
-<article class="services">
-    <div class="title">
-        <a href="{{provider_url}}" target="_blank">{{service_name}}</a>
+<article class="services card">
+    <div class="title card-header">
+        <a href={{provider_url}} target="_blank">{{service_name}}</a>
         <span>({{format_url provider_url}})</span>
         {{log provider}}
-   <div class="provider_name">
-        <p>Provider Name: {{provider.provider_name}}</p>
+        <div class="provider_name">
+            <p>Provider Name: {{provider.provider_name}}</p>
+        </div>
     </div>
-    </div>
+    <div class="card-body">
         <div class="address">
-        <p>Address: {{provider.address}}</p>
-    </div>
+            <p>Address: {{provider.address}}</p>
+        </div>
 
-    <div class="service_name">
-        <p>Name of Service: {{service_name}}</p>
-    </div>
+        <div class="service_name">
+            <p>Name of Service: {{service_name}}</p>
+        </div>
 
-    <div class="provider_url">
-        <p>Provider Link: {{provider_url}}</p>
-    </div>
+        <div class="provider_url">
+            <p>Provider Link: {{provider_url}}</p>
+        </div>
 
-    <div class="service_category">
-        <p>Type of Service: {{service_category}} </p>
-    
-    </div>
+        <div class="service_category">
+            <p>Type of Service: {{service_category}} </p>
+
+        </div>
         <div class="cost">
-        <p>Cost: ${{cost}}</p>
+            <p>Cost: ${{cost}}</p>
+        </div>
     </div>
+
     <div class="meta">
         created by {{provider.provider_name}} on {{format_date created_at}}
-    |
+        |
         <a href="/services/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
 </article>
