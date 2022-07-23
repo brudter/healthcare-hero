@@ -1,7 +1,8 @@
 <h2>Provider Information</h2>
-<ol class="services-list">
+<div class="container">
+<ul class="services-list row" style="list-style: none">
     {{#each services as |service|}}
-    <li>
+    <li class="col-6 my-3">
         {{> service-info service}}
     </li>
     {{/each}}
