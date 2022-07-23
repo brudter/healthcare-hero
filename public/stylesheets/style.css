@@ -86,7 +86,15 @@ header {
 }
 
 header h1 {
-    font-size: 1em;
+    font-size: 2em;
+}
+
+nav {
+    padding-left: 5%;
+}
+header a {
+    margin-left: 20px;
+    font-size: 125%;
 }
 
 main {
@@ -101,10 +109,11 @@ main {
     cursor: pointer;
     text-decoration: none;
     color: #225ca3;
-    font-size: 100%;
+    font-size: 125%;
     font-weight: bold;
     transition: color .1s;
-    margin-left: 16px;
+    margin-left: 25px;
+    margin-right: 30px;
 }
 
 .btn-no-style:hover {
