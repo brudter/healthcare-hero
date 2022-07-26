@@ -14,8 +14,9 @@ Pricing for medical services are usually hidden from the public. This app helps 
 <img width="1316" alt="Bookmarks" src="">
 <img width="1316" alt="Park body" src=""> 
 
+
 ## Link to HealthCare Hero
-Heroku:
-Github:
+Heroku: https://powerful-island-90418.herokuapp.com/
+Github: https://github.com/brudter/healthcare-hero
 
 ## Credits
