@@ -1,5 +1,5 @@
 <section>
-    <h2>Share Provider Information</h2>
+    <h2>Share Service Information</h2>
 
     <form class="new-service-form">
         <div>
@@ -29,7 +29,7 @@
         {{#each services as |service|}}
         <li>
             {{> service-info service}}
-            <a href="/dashboard/edit/{{service.id}}" class="edit-link">Edit provider</a>
+            <a href="/dashboard/edit/{{service.id}}" class="edit-link">Edit service</a>
         </li>
         {{/each}}
     </ol>

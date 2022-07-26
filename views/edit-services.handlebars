@@ -1,7 +1,7 @@
 <article>
     <a href="/dashboard"> &larr; Back to dashboard</a>
     <h2>
-        Edit Provider
+        Edit Service
     </h2>
     <form class="edit-services-form">
         <p>Provider Link</p>
@@ -21,12 +21,13 @@
             <input name="cost" type="number" value="{{services.cost}}" />
         </div>
         <div>
-            {{services.vote_count}} {{format_plural "point" services.vote_count}} by you on {{format_date services.created_at}}
+            created on {{format_date services.created_at}}
             |
-            <a href="/services/{{services.id}}">{{services.comments.length}} {{format_plural "comment" provider.comments.length}}</a>
+            <a href="/services/{{services.id}}">{{services.comments.length}} {{format_plural "note"
+                provider.comments.length}}</a>
         </div>
-        <button type="submit">Save provider</button>
-        <button type="button" class="delete-services-btn">Delete provider</button>
+        <button type="submit">Save service</button>
+        <button type="button" class="delete-services-btn">Delete service</button>
     </form>
 </article>
 
@@ -36,7 +37,7 @@
     </div>
 
     <div>
-        <button type="submit">add comment</button>
+        <button type="submit">add note</button>
     </div>
 </form>
 

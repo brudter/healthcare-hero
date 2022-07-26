@@ -1,7 +1,6 @@
 <article class="services card">
     <div class="title card-header">
-        <a href={{provider_url}} target="_blank">{{service_name}}</a>
-        <span>({{format_url provider_url}})</span>
+        <a href=http://{{provider_url}} target="_blank">{{service_name}}</a>
         {{log provider}}
         <div class="provider_name">
             <p>Provider Name: {{provider.provider_name}}</p>
@@ -32,6 +31,6 @@
     <div class="meta">
         created by {{provider.provider_name}} on {{format_date created_at}}
         |
-        <a href="/services/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        <a href="/services/{{id}}">{{comments.length}} {{format_plural "note" comments.length}}</a>
     </div>
 </article>
