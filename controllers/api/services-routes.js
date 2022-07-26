@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'service_name',
-            'provider_url',
             'address',
             'service_category',
             'cost',
@@ -46,7 +45,6 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'provider_url',
             'service_category',
             'cost',
             'service_name',
@@ -84,7 +82,6 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
     Services.create({
         service_name: req.body.service_name,
-        provider_url: req.body.provider_url,
         service_category: req.body.service_category,
         cost: req.body.cost,
         provider_id: req.session.provider_id
@@ -109,7 +106,6 @@ router.put('/:id', withAuth, (req, res) => {
     Services.update(
         {
             service_name: req.body.service_name,
-            provider_url: req.body.provider_url,
             cost: req.body.cost,
             service_category: req.body.service_category,
         },

@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
     Services.findAll({
         attributes: [
             'id',
-            'provider_url',
             'service_name',
             'cost',
             'service_category',
@@ -21,12 +20,12 @@ router.get('/', (req, res) => {
                 attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
                     model: Provider,
-                    attributes: ['provider_name','address']
+                    attributes: ['provider_name','provider_url','address']
                 }
             },
             {
                 model: Provider,
-                attributes: ['provider_name','address']
+                attributes: ['provider_name','provider_url','address']
             }
         ]
     })
@@ -52,7 +51,6 @@ router.get('/services/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'provider_url',
             'service_name',
             'cost',
             'service_category',
@@ -65,12 +63,12 @@ router.get('/services/:id', (req, res) => {
                 attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
                     model: Provider,
-                    attributes: ['provider_name','address']
+                    attributes: ['provider_name','provider_url','address']
                 }
             },
             {
                 model: Provider,
-                attributes: ['provider_name','address']
+                attributes: ['provider_name','provider_url','address']
             }
         ]
     })

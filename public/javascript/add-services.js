@@ -13,7 +13,7 @@ async function newFormHandler(event) {
         body: JSON.stringify({
             service_name,
             //provider_name,
-            provider_url,
+            // provider_url,
             service_category,
             // address,
             cost

@@ -49,13 +49,6 @@ Services.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        provider_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isURL: true
-            }
-        },
         service_category: {
             type: DataTypes.STRING,
             // references: {

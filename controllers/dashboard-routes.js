@@ -15,7 +15,6 @@ router.get("/", (req, res) => {
       "id",
       "service_name",
       "service_category",
-      "provider_url",
       "cost",
       "created_at",
     ],
@@ -31,7 +30,7 @@ router.get("/", (req, res) => {
         ],
         include: {
           model: Provider,
-          attributes: ["provider_name","address"],
+          attributes: ["provider_name", "provider_url", "address"],
         },
       },
       {
@@ -55,7 +54,6 @@ router.get('/edit/:id', (req, res) => {
     Services.findByPk(req.params.id, {
         attributes: [
             'id',
-            'provider_url',
             'service_name',
             'cost',
             'service_category',
@@ -68,7 +66,7 @@ router.get('/edit/:id', (req, res) => {
                 attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
                     model: Provider,
-                    attributes: ['provider_name','address']
+                    attributes: ['provider_name', 'provider_url', 'address']
                 }
             },
             {
