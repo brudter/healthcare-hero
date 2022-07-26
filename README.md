@@ -21,8 +21,8 @@ Heroku: https://powerful-island-90418.herokuapp.com/
 Github: https://github.com/brudter/healthcare-hero
 
 ## Credits
-<br /> Daniel Lee
-<br /> Samantha Haberman
-<br /> Stella Sun
-<br /> Travis Ramcharran
-<br /> Yaakov Bockian
+[Daniel Lee](https://github.com/randiferous)
+<br /> [Samantha Haberman](https://github.com/Samantha-Ruth)
+<br /> [Stella Sun](https://github.com/Shuyu-Sun)
+<br /> [Travis Ramcharran](https://github.com/travisramcharran)
+<br /> [Yaakov Bockian](https://github.com/brudter)
