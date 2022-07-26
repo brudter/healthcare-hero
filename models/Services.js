@@ -69,6 +69,7 @@ Services.init(
             allowNull: false,
             validate: {
                 isDecimal: true,
+                min:0
             }
         },
         provider_id: {
