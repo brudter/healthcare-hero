@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
       },
       {
         model: Provider,
-        attributes: ["provider_name","address"],
+        attributes: ["provider_name", "provider_url", "address"],
       },
     ],
   })
