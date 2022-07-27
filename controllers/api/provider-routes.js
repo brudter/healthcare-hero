@@ -56,6 +56,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Provider.create({
         provider_name: req.body.provider_name,
+        provider_url: req.body.provider_url,
         email: req.body.email,
         password: req.body.password,
         address: req.body.address,
