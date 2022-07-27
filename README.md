@@ -10,9 +10,7 @@ After creating a repository called healthcare-hero on GitHub, index javascript f
 Pricing for medical services are usually hidden from the public. This app helps make the patient-provider relationship be more transparent. HealthCare used prospective patients searching for a medical service and cost associated with that service prior to making an appointment with a medical provider. It allows for patients to get a general understanding of how much a medical service will cost.
 
 ## Screenshots
-<img width="1280" alt="Homescreen" src="">
-<img width="1316" alt="Bookmarks" src="">
-<img width="1316" alt="Park body" src=""> 
+![alt text](./screenshots/Loginpage.png)
 
 
 ## Link to HealthCare Hero
