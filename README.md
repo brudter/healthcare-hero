@@ -11,8 +11,10 @@ Pricing for medical services are usually hidden from the public. This app helps 
 
 ## Screenshots
 
-![alt text](./screenshots/LoginPage.png
+![alt text](./screenshots/LoginPage.png)
 ![alt text](./screenshots/homepage.png)
+![alt text](./screenshots/create%20service.png)
+
 
 
 ## Link to HealthCare Hero
