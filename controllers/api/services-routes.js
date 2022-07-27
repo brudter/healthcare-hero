@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Services, Provider, Comment, Vote } = require('../../models');
+const { Services, Provider, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all providers
@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
             'service_category',
             'cost',
             'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
         ],
         include: [
             {
@@ -48,8 +47,7 @@ router.get('/:id', (req, res) => {
             'service_category',
             'cost',
             'service_name',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
+            'created_at'
         ],
         include: [
             {
@@ -87,15 +85,6 @@ router.post('/', withAuth, (req, res) => {
         provider_id: req.session.provider_id
     })
         .then(dbServicesData => res.json(dbServicesData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
-});
-
-router.put('/upvote', withAuth, (req, res) => {
-    Services.upvote({ ...req.body, provider_id: req.session.provider_id }, { Vote, Comment, Provider })
-        .then(updatedVoteData => res.json(updatedVoteData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);

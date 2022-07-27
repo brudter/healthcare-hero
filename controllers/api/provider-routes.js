@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Provider, Services, Comment, Vote } = require('../../models');
+const { Provider, Services, Comment } = require('../../models');
 
 // get all Pri
 router.get('/', (req, res) => {
@@ -32,12 +32,6 @@ router.get('/:id', (req, res) => {
                     attributes: ['service_name']
                 }
             },
-            {
-                model: Services,
-                attributes: ['service_name'],
-                through: Vote,
-                as: 'voted_services'
-            }
         ]
     })
         .then(dbProviderData => {

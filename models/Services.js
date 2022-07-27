@@ -2,41 +2,6 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 // create our Post model
 class Services extends Model {}
-//     static upvote(body, models) {
-//         return models.Vote.create({
-//             user_id: body.services_id,
-//             services_id: body.services_id
-//         }).then(() => {
-//             return Services.findOne({
-//                 where: {
-//                     id: body.services_id
-//                 },
-//                 attributes: [
-//                     'id',
-//                     'services_url',
-//                     'services',
-//                     'address',
-//                     'service_type',
-//                     'cost',
-//                     'created_at',
-//                     [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
-//                 ],
-//                 include: [
-//                     {
-//                         model: models.Comment,
-//                         attributes: ['id', 'comment_text', 'services_id', 'user_id', 'created_at'],
-//                         include: {
-//                             model: models.User,
-//                             attributes: ['username']
-//                         }
-//                     }
-//                 ]
-//             });
-//         });
-//     }
-// }
-
-// create fields/columns for Post model
 Services.init(
     {
         id: {

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Services, Provider, Comment, Vote } = require('../models');
+const { Services, Provider, Comment } = require('../models');
 
 // get all services for homepage
 router.get('/', (req, res) => {
@@ -11,8 +11,7 @@ router.get('/', (req, res) => {
             'service_name',
             'cost',
             'service_category',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
+            'created_at'
         ],
         include: [
             {
@@ -54,8 +53,7 @@ router.get('/services/:id', (req, res) => {
             'service_name',
             'cost',
             'service_category',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
+            'created_at'
         ],
         include: [
             {
