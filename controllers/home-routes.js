@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
             },
             {
                 model: Provider,
-                attributes: ['provider_name','provider_url','address']
+                attributes: ['provider_name','provider_url','address', 'address_city', 'address_state', 'address_zip']
             }
         ]
     })
@@ -61,7 +61,7 @@ router.get('/services/:id', (req, res) => {
                 attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
                     model: Provider,
-                    attributes: ['provider_name','provider_url','address']
+                    attributes: ['provider_name','provider_url','address', 'address_city', 'address_state', 'address_zip']
                 }
             },
             {

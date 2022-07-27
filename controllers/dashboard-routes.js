@@ -30,12 +30,12 @@ router.get("/", (req, res) => {
         ],
         include: {
           model: Provider,
-          attributes: ["provider_name", "provider_url", "address"],
+          attributes: ["provider_name", "provider_url", "address",  'address_city', 'address_state', 'address_zip'],
         },
       },
       {
         model: Provider,
-        attributes: ["provider_name", "provider_url", "address"],
+        attributes: ["provider_name", "provider_url", "address",  'address_city', 'address_state', 'address_zip'],
       },
     ],
   })
