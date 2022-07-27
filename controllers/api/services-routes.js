@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
             },
             {
                 model: Provider,
-                attributes: ['provider_name']
+                attributes: ['provider_name','provider_url','address', 'address_city', 'address_state', 'address_zip']
             }
         ]
     })
