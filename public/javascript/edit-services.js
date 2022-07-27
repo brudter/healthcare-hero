@@ -14,7 +14,7 @@ async function editFormHandler(event) {
         method: 'PUT',
         body: JSON.stringify({
             service_name,
-            provider_url,
+            // provider_url,
             service_category,
             cost
 

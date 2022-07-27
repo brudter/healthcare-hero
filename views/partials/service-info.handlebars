@@ -1,6 +1,6 @@
 <article class="services card">
     <div class="title card-header">
-        <a href="https://{{provider_url}}" target="_blank">{{service_name}}</a>
+        <a href=http://{{provider.provider_url}} target="_blank">{{service_name}}</a>
         {{log provider}}
         <div class="provider_name">
             <p>Provider Name: {{provider.provider_name}}</p>
@@ -16,7 +16,8 @@
         </div>
 
         <div class="provider_url">
-            <p>Provider Link: {{provider_url}}</p>
+            <p>Provider Link:  <a href=http://{{provider.provider_url}} target="_blank">{{provider.provider_name}}</a></p>
+            
         </div>
 
         <div class="service_category">

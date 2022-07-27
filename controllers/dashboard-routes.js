@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Services, Provider, Comment, Vote } = require("../models");
+const { Services, Provider, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 // router.get("/", withAuth, (req, res) => {
@@ -15,7 +15,6 @@ router.get("/", (req, res) => {
       "id",
       "service_name",
       "service_category",
-      "provider_url",
       "cost",
       "created_at",
     ],
@@ -31,7 +30,7 @@ router.get("/", (req, res) => {
         ],
         include: {
           model: Provider,
-          attributes: ["provider_name","address"],
+          attributes: ["provider_name", "provider_url", "address"],
         },
       },
       {
@@ -55,12 +54,10 @@ router.get('/edit/:id', (req, res) => {
     Services.findByPk(req.params.id, {
         attributes: [
             'id',
-            'provider_url',
             'service_name',
             'cost',
             'service_category',
-            'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE services.id = vote.services_id)'), 'vote_count']
+            'created_at'
         ],
         include: [
             {
@@ -68,7 +65,7 @@ router.get('/edit/:id', (req, res) => {
                 attributes: ['id', 'comment_text', 'services_id', 'provider_id', 'created_at'],
                 include: {
                     model: Provider,
-                    attributes: ['provider_name','address']
+                    attributes: ['provider_name', 'provider_url', 'address']
                 }
             },
             {

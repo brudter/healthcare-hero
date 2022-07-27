@@ -20,6 +20,13 @@ Provider.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        provider_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isURL: true
+            }
+        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,

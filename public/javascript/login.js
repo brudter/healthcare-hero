@@ -26,6 +26,7 @@ async function signupFormHandler(event) {
     event.preventDefault();
 
     const provider_name = document.querySelector('#provider_name-signup').value.trim();
+    const provider_url = document.querySelector('#provider_url-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
     const address = document.querySelector('#address-signup').value.trim();
@@ -40,6 +41,7 @@ async function signupFormHandler(event) {
             method: 'post',
             body: JSON.stringify({
                 provider_name,
+                provider_url,
                 email,
                 password,
                 address,

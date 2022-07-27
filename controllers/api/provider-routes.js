@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Provider, Services, Comment, Vote } = require('../../models');
+const { Provider, Services, Comment } = require('../../models');
 
 // get all Pri
 router.get('/', (req, res) => {
@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Services,
-                attributes: ['id', 'service_name', 'provider_url', 'service_category', 'cost', 'created_at']
+                attributes: ['id', 'service_name', 'service_category', 'cost', 'created_at']
             },
             {
                 model: Comment,
@@ -32,12 +32,6 @@ router.get('/:id', (req, res) => {
                     attributes: ['service_name']
                 }
             },
-            {
-                model: Services,
-                attributes: ['service_name'],
-                through: Vote,
-                as: 'voted_services'
-            }
         ]
     })
         .then(dbProviderData => {
@@ -56,6 +50,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Provider.create({
         provider_name: req.body.provider_name,
+        provider_url: req.body.provider_url,
         email: req.body.email,
         password: req.body.password,
         address: req.body.address,
