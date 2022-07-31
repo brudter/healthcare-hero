@@ -3,7 +3,7 @@ const sequelize = require("../config/connection");
 const { Services, Provider, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
-// router.get("/", withAuth, (req, res) => {
+// Get all services entered by logged-in provider
 router.get("/", (req, res) => {
   console.log(req.session);
   console.log("!!!!!!!!!!!!!!!!!!!!");
@@ -49,7 +49,6 @@ router.get("/", (req, res) => {
         });
 });
 
-// router.get('/edit/:id', withAuth, (req, res) => {
 router.get('/edit/:id', (req, res) => {
     Services.findByPk(req.params.id, {
         attributes: [

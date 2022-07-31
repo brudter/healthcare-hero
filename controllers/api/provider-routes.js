@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Provider, Services, Comment } = require('../../models');
 
-// get all Pri
+// get all providers
 router.get('/', (req, res) => {
     Provider.findAll({
         attributes: { exclude: ['password'] }

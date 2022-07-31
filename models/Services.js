@@ -16,10 +16,6 @@ Services.init(
         },
         service_category: {
             type: DataTypes.STRING,
-            // references: {
-            //     model: 'category',
-            //     key: 'id'
-            // }
             allowNull: false,
         },
         cost: {

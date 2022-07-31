@@ -3,7 +3,7 @@ const sequelize = require('../../config/connection');
 const { Services, Provider, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all providers
+// get all services
 router.get('/', (req, res) => {
     console.log('======================');
     Services.findAll({
